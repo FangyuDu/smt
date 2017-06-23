@@ -15,6 +15,8 @@ let routes = [
 import member from './member'
 routes.push(member)
 
-export default new Router({
+const router = new Router({
   routes
 })
+
+export default router
