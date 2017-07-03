@@ -10,6 +10,18 @@ const mutations = {
     state.userInfo = obj
   }
 }
+const getters = {
+  userInfo: (state)  => state.userInfo
+}
+const actions = {
+  setUserInfo ({commit}, obj) {
+    // console.log(state, obj);
+    commit('setUserInfo', obj)
+  }
+}
 export default new Vuex.Store({
-  state
+  state,
+  getters,
+  mutations,
+  actions
 })

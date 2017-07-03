@@ -11,6 +11,7 @@
           el-form-item(label="密码：")
             el-input(type="password", v-model="userInfo.password")
           el-form-item
+            el-button(type="primary", v-on:click="checkUserRepeat") 检测
             el-button(type="primary", v-on:click="reg") 注册
             el-button 取消
 </template>
@@ -29,6 +30,24 @@ export default {
     }
   },
   methods: {
+    checkUserRepeat () {
+      let data = {
+        user: this.userInfo.user
+      }
+      axios.post('http://dfy/bin/checkUserRepeat', data).then(res => {
+        if (res.data.flag) {
+          this.$message({
+            message: '用户名已注册',
+            type: 'warning'
+          })
+        } else {
+          this.$message({
+            message: '用户名尚未被注册',
+            type: 'success'
+          })
+        }
+      })
+    },
     reg () {
       let data = {
         user: this.userInfo.user,

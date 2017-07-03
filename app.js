@@ -37,8 +37,9 @@ require('./bin/router')(app);
 //   name: '逐云',
 //   password: 'dfy1234'
 // }
-// const reg = require("./bin/member/reg")
-// reg(user, () => {
-//   console.log('a')
+// const reg = require("./bin/member/query")
+// let sql = "select count(user) as count from users where user= 'aaba'"
+// reg(sql, (res) => {
+//   console.log(res[0].count)
 // })
 // 注册测试结束

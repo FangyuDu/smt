@@ -7,7 +7,7 @@ export default {
     path: '/member',
     name: '会员',
     component: member,
-    redirect: '/member/login',
+    redirect: '/member/info',
     children: [
       {
         path: 'reg',
