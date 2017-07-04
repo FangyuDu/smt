@@ -1,11 +1,18 @@
 <template lang="pug">
   #login
-    el-card
+    el-card.login-fr
+      header(slot="header") 登录
       el-form(label-width="80px")
         el-form-item(label="用户名：")
           el-input(v-model="user.user")
         el-form-item(label="密码：")
           el-input(v-model="user.password")
+        el-form-item
+          | 暂无帐号，
+          router-link(to="reg") 立即注册
+          | ！
+          //- | 。返回
+          //- router-link(to="/") 首页
         el-form-item
           el-button(type="primary",v-on:click="login") 登录
           el-button 取消
@@ -52,5 +59,22 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  #login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background: url('../../assets/img/bg-1.jpg');
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+  }
+  .el-card.login-fr {
+    width: 500px;
+    background-color: rgba(255, 255, 255, .93);
+  }
+</style>
 
 

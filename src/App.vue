@@ -1,8 +1,8 @@
-<template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+<template lang="pug">
+  #app
+    router-view
 </template>
+
 <script>
 import Cookie from 'js-cookie'
 import axios from 'axios'
@@ -36,3 +36,23 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  #app {
+    display: flex;
+    height: 100%;
+  }
+  .video-fr {
+    left: 0px;
+    position: fixed;
+    bottom: 0px;
+    resize: both;
+    #video {
+      height: 540x;
+      width: 960x;
+    }
+    #v2 {
+      height: 540x;
+      width: 960x;
+    }
+  }
+</style>
