@@ -2,7 +2,10 @@ const express = require("express");
 const app = new express();
 const path = require("path");
 const bodyParser = require('body-parser')
+
 app.use(express.static(path.join(__dirname, 'html')))
+
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 

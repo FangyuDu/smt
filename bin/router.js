@@ -2,8 +2,22 @@ const checkUserRepeat = require("./member/checkUserRepeat.js")
 const reg = require('./member/reg.js')
 const login = require('./member/login.js')
 const loginByToken = require('./member/loginByToken')
+const multiparty = require("multiparty")
+
+// 上传区块
+const upload = require('./router/upload.js')
 
 module.exports = app => {
+  // 上传文件
+  app.post('/upload', (req, res) => {
+    // 文件名
+    let form = new multiparty.Form({uploadDir: './upload'});
+    form.parse(req, (err, fields, files) => {
+      console.log(files.file,'上传完成');
+    })
+    res.send('上传完成');
+    res.end();
+  })
   // 检测用户名是否存在
   app.post('/bin/checkUserRepeat', (req, res) => {
     let user = req.body.user

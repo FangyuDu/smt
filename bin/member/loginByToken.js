@@ -5,11 +5,9 @@ function loginByToken (data, cb) {
     return false;
   }
   let sql = `select *,count(user) as count from users where tokenID = '${data.tokenID}'`
-  console.log(sql);
   C.query(sql, (err, res) => {
     if (err) throw err;
     res = res[0];
-    console.log(res);
     if (res.count) { // 如果返回正确
       if (cb instanceof Function) { // 如果存在回调
         cb(res)
