@@ -1,5 +1,7 @@
 <template lang="pug">
   #memberInfo
+    notelist(v-if="userInfo", :userID="userInfo.userID")
+    note
     el-card(v-if="userInfo")
       h1 {{userInfo.name}}
       p
@@ -14,12 +16,18 @@
 <script>
 import Cookie from 'js-cookie'
 import {mapGetters} from 'vuex'
+import note from './note'
+import notelist from './notelist'
 
 export default {
   computed: {
     ...mapGetters([
       'userInfo'
     ])
+  },
+  components: {
+    note,
+    notelist
   },
   beforeRouteEnter (to, from, next) {
     const tokenID = Cookie.get('tokenID');

@@ -5,7 +5,14 @@
         el-menu-item(index="/") 网站首页
         el-menu-item(index="info") 个人中心
         li.el-menu-item(@click="logout") 注销
-    router-view  
+    .main
+      el-card.member-left
+        el-card 基本信息
+        el-card 笔记
+        el-card 上传
+        el-card 文件管理
+      el-card.member-body
+        router-view
 </template>
 <script>
 import Cookie from 'js-cookie'
@@ -35,7 +42,18 @@ export default {
 }
 </script>
 <style lang="scss">
-  #member {width: 100%;}
+  #member {
+    width: 100%;
+    .main {
+      display: flex;
+      align-content:flex-start;
+      height: calc(100% - 60px);
+    }
+    .member-left {width: 200px;}
+    .member-body {
+      flex: 2;
+    }
+  }
 </style>
 
 

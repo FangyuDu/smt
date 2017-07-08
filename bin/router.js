@@ -3,6 +3,7 @@ const reg = require('./member/reg.js')
 const login = require('./member/login.js')
 const loginByToken = require('./member/loginByToken')
 const multiparty = require("multiparty")
+const note = require('./member/note.js')
 
 // 上传区块
 const upload = require('./router/upload.js')
@@ -75,6 +76,22 @@ module.exports = app => {
       }
       res.send(cb)
       res.end()    
+    })
+  })
+  // 上传笔记
+  app.post('/addNote', (req, res) => {
+    let data = req.body
+    note.addNote(data, () => {
+      res.send('添加成功！');
+      res.end();
+    })
+  })
+  // 获取笔记
+  app.get('/showNote', (req, res) => {
+    let data = req.query
+    note.showNote(data.userID, (res2) => {
+      res.send(res2);
+      res.end();
     })
   })
 }

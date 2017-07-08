@@ -6,22 +6,15 @@
         el-card(v-if="userInfo") 
           router-link(to="/member/info") {{userInfo.name}}，个人中心
       el-col(:span="4")
-        el-card 左侧导航
+        el-card 
+          header(slot="header") 
+            h2 左侧导航
+          el-card 上传
       el-col(:span="20").indexPage-main
         el-card
           upload
           hr
-          el-card.news-item aaa
-          el-card.news-item aaa
-          el-card.news-item aaa
-          el-card.news-item aaa
-          el-card.news-item aaa
-          el-card.news-item aaa
-          el-card.news-item aaa
-          el-card.news-item aaa
-          el-card.news-item aaa
-          el-card.news-item aaa
-          el-card 底部内容
+          el-card 时光之末，诺兹多姆的疯狂
       
 </template>
 

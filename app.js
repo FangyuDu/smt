@@ -4,7 +4,7 @@ const path = require("path");
 const bodyParser = require('body-parser')
 
 app.use(express.static(path.join(__dirname, 'html')))
-
+app.use('/assets', express.static(path.join(__dirname,'upload')));
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -33,16 +33,3 @@ C.connect( err => {
 
 // 添加路由
 require('./bin/router')(app);
-
-// 注册测试
-// let user = {
-//   user: 'dfy',
-//   name: '逐云',
-//   password: 'dfy1234'
-// }
-// const reg = require("./bin/member/query")
-// let sql = "select count(user) as count from users where user= 'aaba'"
-// reg(sql, (res) => {
-//   console.log(res[0].count)
-// })
-// 注册测试结束
