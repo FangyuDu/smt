@@ -1,6 +1,6 @@
 <template lang="pug">
   el-card.notelist(v-if="notes.length > 0")
-    el-row.note-item(v-for = "i in notes") 
+    el-row.note-item(v-for = "i in notes" :key="'n-'+i") 
       el-col(:span = "4").note-time {{i.createTime}}
       el-col(:span="20").note-text {{i.noteText}}
 </template>
@@ -26,13 +26,17 @@ export default {
       axios.get('http://localhost/showNote', {
         params: data
       }).then(res => {
-        console.log(res);
-        console.log(fecha);
+        let today = new Date()
+        let todayString = fecha.format(today,'YYYYMMDD')
         this.notes = res.data.map(item => {
-          item.createTime = fecha.format(fecha.parse(item.createTime, 'YY-MM-DD HH:mm:ss'), 'MM-DD')
+          let day = fecha.format(fecha.parse(item.createTime, 'YYYY-MM-DD HH:mm:ss ZZ'), 'YYYYMMDD')
+          if (day == todayString) {
+            item.createTime = fecha.format(fecha.parse(item.createTime, 'YYYY-MM-DD HH:mm:ss ZZ'), 'HH:mm')
+          } else {
+            item.createTime = fecha.format(fecha.parse(item.createTime, 'YYYY-MM-DD HH:mm:ss ZZ'), 'MM-DD')
+          }
           return item
         })
-        console.log(this.notes);
       })
     }
   },

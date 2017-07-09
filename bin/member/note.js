@@ -22,7 +22,6 @@ function showNote(id, cb) {
     if (err) throw err;
     if (cb instanceof Function) {
       cb(res)
-      console.log(res);
     }
   })  
 }

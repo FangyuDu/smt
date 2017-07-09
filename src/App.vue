@@ -25,10 +25,11 @@ export default {
         if (cb.state) {
           Cookie.set('tokenID', cb.data.tokenID, {expires: .5})
           this.setUserInfo(cb.data);
+          console.log(cb.state);
           // this.$router.push('/member/info');
           // console.log(this.$store.state);
         } else {
-          // this.$message('用户名或密码')
+          this.$message('用户名或密码错误2')
         }
         this.$message(cb.message)
       })

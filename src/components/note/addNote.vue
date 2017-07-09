@@ -1,6 +1,6 @@
 <template lang="pug">
   el-card
-    header(slot="header") 添加手记
+    header(slot="header") 添加便签
     el-input(type="textarea", v-model="note")
     hr
     el-button(type="primary", @click="submit") 添加
@@ -28,9 +28,8 @@ export default {
         noteText: this.note,
       }
       axios.post('http://localhost/addnote', data).then((res) => {
-        console.log(res);
+        this.$parent.$emit('refresh');
       })
-      console.log(data);
     }
   }
 }

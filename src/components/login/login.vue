@@ -22,6 +22,7 @@ import axios from 'axios'
 import md5 from 'md5'
 import Cookie from 'js-cookie'
 import {mapActions} from 'vuex'
+
 export default {
   data () {
     return {
@@ -45,7 +46,7 @@ export default {
         if (cb.state) {
           Cookie.set('tokenID', cb.data.tokenID, {expires: .5})
           this.setUserInfo(cb.data);
-          this.$router.push('info');
+          this.$router.push('/');
           console.log(this.$store.state);
         } else {
           // this.$message('用户名或密码')
